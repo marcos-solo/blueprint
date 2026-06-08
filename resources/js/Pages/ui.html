@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Blueprint Legal | Commercial Law Firm Tanzania | Founder-Led Advocacy</title>
+  <meta name="description" content="Blueprint Legal is a premium commercial law boutique in Dar es Salaam, Tanzania. Founder-led expertise in Corporate M&A, Intellectual Property, Litigation, and cross-border advisory.">
+  <meta name="keywords" content="Tanzania law firm, Dar es Salaam lawyer, commercial law Tanzania, trademark lawyer Tanzania, business lawyer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy-primary: #061D3B;
+      --navy-secondary: #08264A;
+      --gold: #C9A35B;
+      --gold-light: #d9b468;
+      --white: #FFFFFF;
+      --light-bg: #F5F7FA;
+      --text-body: #16233A;
+      --text-muted: #4a5b7a;
+      --border-light: #e8edf3;
+      --shadow-sm: 0 10px 30px -8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-body);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--navy-primary);
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      color: var(--gold);
+      font-size: 2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-body);
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    .nav-cta {
+      background: var(--navy-primary);
+      color: var(--white) !important;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--navy-primary) !important;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--navy-primary);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy-primary);
+      box-shadow: 0 2px 8px rgba(201,163,91,0.25);
+    }
+    .btn-primary:hover {
+      background: #b48c45;
+      transform: translateY(-2px);
+      color: var(--white);
+    }
+    .btn-secondary {
+      border: 1.5px solid var(--gold);
+      background: transparent;
+      color: var(--navy-primary);
+    }
+    .btn-secondary:hover {
+      background: var(--gold);
+      color: var(--navy-primary);
+    }
+    .btn-outline-light {
+      border: 1px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: var(--white);
+    }
+    .btn-outline-light:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy-primary);
+    }
+
+    /* Hero Section - Dark Navy */
+    .hero {
+      background: var(--navy-primary);
+      padding: 4rem 0 5rem;
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-subtitle {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .hero-title {
+      font-size: 3.8rem;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span {
+      color: var(--gold);
+    }
+    .hero-description {
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      max-width: 90%;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-image {
+      background: linear-gradient(135deg, #0a2a4a, #03122a);
+      border-radius: 24px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+    .hero-image .placeholder-text {
+      color: var(--gold);
+      font-size: 0.8rem;
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      background: rgba(0,0,0,0.5);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    /* Value Strip */
+    .value-strip {
+      background: var(--white);
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .value-item i {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .value-item h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--navy-primary);
+    }
+    .value-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Common */
+    .section {
+      padding: 5rem 0;
+    }
+    .section-light {
+      background: var(--light-bg);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-subtitle {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 2.8rem;
+      color: var(--navy-primary);
+    }
+    .section-title span {
+      color: var(--gold);
+    }
+
+    /* Expertise Cards - 6 cards grid */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border-light);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .card-icon {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .card-link {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* Who We Serve - Chips */
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+    }
+    .chip {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .chip:hover {
+      border-color: var(--gold);
+      background: rgba(201,163,91,0.05);
+    }
+
+    /* Founder Block */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .founder-image {
+      background: #eef2f8;
+      border-radius: 24px;
+      height: 400px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="%23eef2f8"/><circle cx="100" cy="80" r="40" fill="%23C9A35B" opacity="0.3"/><rect x="70" y="130" width="60" height="60" fill="%23C9A35B" opacity="0.2"/><text x="70" y="180" fill="%23061D3B" font-size="14">Portrait</text></svg>');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+    .founder-image span {
+      background: var(--navy-primary);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+    .proof-points {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+    .proof-points li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .proof-points i {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    /* Insights Preview - 3 cards */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .insight-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+    .insight-card i {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .insight-card h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* CTA Banner - Dark */
+    .cta-banner {
+      background: var(--navy-primary);
+      border-radius: 28px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 2rem auto;
+    }
+    .cta-banner h2 {
+      color: var(--white);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-primary);
+      color: #b9c7db;
+      padding: 3rem 0 2rem;
+      margin-top: 3rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .footer h4 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .footer a {
+      color: #b9c7db;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .footer a:hover {
+      color: var(--gold);
+    }
+    .footer-contact i {
+      width: 1.5rem;
+      color: var(--gold);
+    }
+    .footer-bottom {
+      border-top: 1px solid #1e3a5f;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 950px) {
+      .hero-grid, .founder-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.8rem; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .value-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .navbar.responsive .nav-links { display: flex; flex-direction: column; width: 100%; padding: 1rem 0; gap: 1rem; }
+      .section-title { font-size: 2.2rem; }
+      .container { padding: 0 1.25rem; }
+    }
+    @media (max-width: 650px) {
+      .expertise-grid { grid-template-columns: 1fr; }
+      .hero-buttons .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="navbar" id="navbar">
+      <div class="logo"><a href="#">blueprint<span>.</span>legal</a></div>
+      <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#founder">Founder</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#schedule" class="nav-cta">Book a Consultation</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO SECTION: Dark navy, 2 buttons, right-side image -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-subtitle">Dar es Salaam • East Africa • Global</span>
+          <h1 class="hero-title">Commercial Clarity. <span>Founder-Led</span> Advocacy.</h1>
+          <p class="hero-description">Blueprint Legal is a modern commercial law boutique delivering sophisticated corporate counsel, IP protection, and litigation excellence with direct partner involvement.</p>
+          <div class="hero-buttons">
+            <a href="#schedule" class="btn btn-primary">Book a Consultation</a>
+            <a href="#expertise" class="btn btn-secondary">View Expertise</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div style="background: rgba(0,0,0,0.3); width:100%; height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+            <i class="fas fa-building" style="font-size: 4rem; color: var(--gold); opacity: 0.7;"></i>
+            <p style="color:white; margin-top:1rem;">Dar es Salaam | Business District</p>
+          </div>
+          <div class="placeholder-text">Premium legal counsel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE STRIP: 3 items with line icons -->
+  <div class="value-strip">
+    <div class="container">
+      <div class="value-grid">
+        <div class="value-item"><i class="fas fa-chart-line"></i><h4>Commercial Clarity</h4><p>Plain-language strategy, sharp execution</p></div>
+        <div class="value-item"><i class="fas fa-map-marker-alt"></i><h4>Local Insight</h4><p>Dar & Tanzania regulatory mastery</p></div>
+        <div class="value-item"><i class="fas fa-globe-africa"></i><h4>Cross-Border Support</h4><p>Seamless East African & international advisory</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERTISE CARDS: SIX cards minimum -->
+  <section class="section" id="expertise">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Practice Areas</span>
+        <h2 class="section-title">Sophisticated <span>Legal Architecture</span></h2>
+      </div>
+      <div class="expertise-grid">
+        <div class="card"><div class="card-icon"><i class="fas fa-chart-pie"></i></div><h3>Corporate & M&A</h3><p>Mergers, acquisitions, joint ventures, and regulatory approvals for East African expansion.</p><a href="#schedule" class="card-link">Book a Consultation →</a></div>
+        <div class="card"><div class="card-icon"><i class="fas fa-trademark"></i></div><h3>Intellectual Property</h3><p>Trademark registration, enforcement, copyright & IP portfolio management in Tanzania & ARIPO.</p><a href="#schedule" class="card-link">Book a Consultation →</a></div>
+        <div class="card"><div class="card-icon"><i class="fas fa-gavel"></i></div><h3>Commercial Litigation</h3><p>High-stakes dispute resolution, arbitration, debt recovery, and commercial court advocacy.</p><a href="#schedule" class="card-link">Book a Consultation →</a></div>
+        <div class="card"><div class="card-icon"><i class="fas fa-building"></i></div><h3>Real Estate & Projects</h3><p>Property development, leasing, construction contracts, and cross-border real estate finance.</p><a href="#schedule" class="card-link">Book a Consultation →</a></div>
+        <div class="card"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3>Investment Advisory</h3><p>Foreign investment structuring, regulatory compliance, and sector-specific licensing.</p><a href="#schedule" class="card-link">Book a Consultation →</a></div>
+        <div class="card"><div class="card-icon"><i class="fas fa-balance-scale"></i></div><h3>Employment & Compliance</h3><p>Labor law, workplace policies, and corporate compliance for local and international employers.</p><a href="#schedule" class="card-link">Book a Consultation →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE: Horizontal chips -->
+  <div class="container">
+    <div class="chips-container">
+      <div class="chip">Startups & Tech</div>
+      <div class="chip">SMEs & Family Offices</div>
+      <div class="chip">Foreign Investors</div>
+      <div class="chip">Brand Owners</div>
+      <div class="chip">Property Developers</div>
+      <div class="chip">Technology Businesses</div>
+    </div>
+  </div>
+
+  <!-- FOUNDER BLOCK: portrait, bio, 3 proof points, direct CTA -->
+  <section class="section section-light" id="founder">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="founder-image"><span>Founder & Principal Counsel</span></div>
+        <div>
+          <span class="section-subtitle">Founder-Led Trust</span>
+          <h2 class="section-title">Jabari Mtoro, <span>Managing Partner</span></h2>
+          <p>Over 15 years experience in commercial law, investment advisory, and cross-border litigation. Recognized for pragmatic strategies and direct client partnership. Based in Dar es Salaam, serving clients across East Africa and internationally.</p>
+          <ul class="proof-points">
+            <li><i class="fas fa-check-circle"></i> Past Chair, Tanganyika Law Society Commercial Committee</li>
+            <li><i class="fas fa-check-circle"></i> Trusted advisor to FTSE 100 & Fortune 500 entrants into East Africa</li>
+            <li><i class="fas fa-check-circle"></i> Member: ICC Arbitration & Tanzania International Arbitration Centre</li>
+          </ul>
+          <a href="#schedule" class="btn btn-primary">Contact the Founder →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS PREVIEW: 3 latest articles, clean -->
+  <section class="section" id="insights">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Legal Intelligence</span>
+        <h2 class="section-title">Insights & <span>Market Updates</span></h2>
+      </div>
+      <div class="insights-grid">
+        <div class="insight-card"><i class="fas fa-chart-line"></i><h4>Doing Business in Tanzania 2025</h4><p>Key regulatory reforms for foreign investors: new investment code, tax incentives, and digital economy rules.</p><a href="#" class="card-link">Read more →</a></div>
+        <div class="insight-card"><i class="fas fa-registered"></i><h4>Trademark Protection in Africa</h4><p>How to secure brand rights across 22 African jurisdictions using ARIPO and Madrid Protocol strategies.</p><a href="#" class="card-link">Read more →</a></div>
+        <div class="insight-card"><i class="fas fa-file-contract"></i><h4>Arbitration Clauses in Commercial Contracts</h4><p>Drafting effective dispute resolution clauses under Tanzanian law for cross-border deals.</p><a href="#" class="card-link">Read more →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER: Dark section before footer -->
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Let's discuss how we can support your business.</h2>
+      <a href="#schedule" class="btn btn-primary" style="background: var(--gold); color: var(--navy-primary);">Book a Consultation</a>
+    </div>
+  </div>
+
+  <!-- CONTACT / CONSULTATION SECTION -->
+  <section class="section section-light" id="schedule">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Secure Counsel</span>
+        <h2 class="section-title">Request a <span>Consultation</span></h2>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto; background: var(--white); border-radius: 28px; padding: 2rem; box-shadow: var(--shadow-sm);">
+        <div id="formMessage" style="display: none;" class="alert-success"></div>
+        <form id="consultForm">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+            <div><label style="font-weight: 500;">Full Name *</label><input type="text" id="fullName" class="form-control" style="width:100%; padding:0.8rem; border-radius:12px; border:1px solid var(--border-light);" required></div>
+            <div><label style="font-weight: 500;">Email *</label><input type="email" id="email" class="form-control" style="width:100%; padding:0.8rem; border-radius:12px; border:1px solid var(--border-light);" required></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1rem;">
+            <div><label style="font-weight: 500;">Phone / WhatsApp</label><input type="tel" id="phone" class="form-control" style="width:100%; padding:0.8rem; border-radius:12px; border:1px solid var(--border-light);"></div>
+            <div><label style="font-weight: 500;">Practice Area</label><select id="practiceArea" class="form-control" style="width:100%; padding:0.8rem; border-radius:12px; border:1px solid var(--border-light);"><option>Corporate & M&A</option><option>Intellectual Property</option><option>Commercial Litigation</option><option>Real Estate</option><option>Investment Advisory</option></select></div>
+          </div>
+          <div style="margin-top: 1rem;"><label style="font-weight: 500;">Preferred Date & Time *</label><input type="datetime-local" id="preferredDate" class="form-control" style="width:100%; padding:0.8rem; border-radius:12px;" required></div>
+          <div style="margin-top: 1rem;"><label style="font-weight: 500;">Brief Summary *</label><textarea id="message" rows="3" class="form-control" style="width:100%; padding:0.8rem; border-radius:12px;" placeholder="Describe your legal matter..." required></textarea></div>
+          <div style="margin-top: 2rem; text-align: center;"><button type="submit" class="btn btn-primary" style="width:100%;">Schedule Private Briefing</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER: complete with all required elements -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div><h4>Blueprint Legal</h4><p>Premium commercial law boutique, Dar es Salaam. Founder-led, modern, globally-minded.</p><p style="margin-top:0.5rem;">📍 Oyster Bay, Dar es Salaam, Tanzania</p></div>
+      <div class="footer-contact"><h4>Contact</h4><p><i class="fas fa-phone-alt"></i> +255 22 212 3456<br><i class="fab fa-whatsapp"></i> +255 758 123 456<br><i class="far fa-envelope"></i> hello@blueprintlegal.co.tz<br><i class="fab fa-linkedin"></i> /company/blueprint-legal</p><p><strong>Office Hours:</strong> Mon-Fri, 9:00 – 17:00 EAT</p></div>
+      <div><h4>Navigate</h4><p><a href="#home">Home</a><br><a href="#expertise">Expertise</a><br><a href="#founder">Founder</a><br><a href="#insights">Insights</a><br><a href="#schedule">Consultation</a></p></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Blueprint Legal – Attorney advertising. Prior results do not guarantee similar outcomes. The information on this website is for general informational purposes only and does not constitute legal advice.</p>
+      <p style="margin-top:0.5rem;"><a href="#">Privacy Policy</a> | <a href="#">Cookie Notice</a> | <a href="#">Legal Disclaimer</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navbar = document.getElementById('navbar');
+  menuToggle?.addEventListener('click', () => navbar.classList.toggle('responsive'));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (navbar.classList.contains('responsive')) navbar.classList.remove('responsive');
+      }
+    });
+  });
+
+  // Contact form handler
+  const form = document.getElementById('consultForm');
+  const messageDiv = document.getElementById('formMessage');
+  form?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const date = document.getElementById('preferredDate').value;
+    if (!name || !email || !date) {
+      alert('Please fill in required fields: Name, Email, and Preferred Date.');
+      return;
+    }
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      messageDiv.style.display = 'block';
+      messageDiv.innerHTML = '✓ Consultation request received! We will contact you within 24 hours to confirm.';
+      messageDiv.style.background = '#e9f7e1';
+      messageDiv.style.padding = '1rem';
+      messageDiv.style.borderRadius = '16px';
+      messageDiv.style.marginBottom = '1.5rem';
+      messageDiv.style.textAlign = 'center';
+      form.reset();
+      btn.textContent = originalText;
+      btn.disabled = false;
+      setTimeout(() => { messageDiv.style.display = 'none'; }, 5000);
+    }, 800);
+  });
+</script>
+</body>
+</html>
