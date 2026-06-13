@@ -66,5 +66,22 @@ class DatabaseSeeder extends Seeder
             'status' => 'completed',
             'notes' => 'Consultation completed successfully. Dr. Aris Thorne finalized IP auditing framework. provisional filings submitted to USPTO. Case file closed.',
         ]);
+
+        // Seed Mock Blogs
+        \App\Models\Blog::create([
+            'title' => 'Structuring Business Entities in East Africa',
+            'slug' => 'structuring-business-entities-in-east-africa',
+            'content' => "Entering the East African market requires a clear understanding of regional corporate governance and structuring. In Tanzania, companies can register as a local entity or a branch of a foreign company.\n\nWhen deciding on structuring, business owners should analyze capital requirements, tax implications, and ownership restrictions. For instance, certain sectors like mining, telecommunications, and shipping have local participation guidelines that require Tanzanian citizens to hold a minimum percentage of shares.\n\nKey considerations:\n1. Choice of Entity: LLC vs. Foreign Branch.\n2. Local Shareholding requirements.\n3. Tax incentives under the Tanzania Investment Centre (TIC).\n\nConsulting early with legal advisors ensures your venture is established on a compliant, scalable foundation.",
+            'image_url' => 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop',
+            'video_url' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Mock YT link
+        ]);
+
+        \App\Models\Blog::create([
+            'title' => 'Intellectual Property Compliance Guidelines',
+            'slug' => 'intellectual-property-compliance-guidelines',
+            'content' => "Protecting your software code, trademarks, and brand identity is critical in today's digital economy. This guide outlines standard compliance checks and auditing procedures for IP portfolios.\n\nStart by identifying core intellectual property assets including patents, copyrightable material, trade secrets, and registered trademarks. It is essential to have robust employee and contractor agreement clauses that explicitly assign IP rights to the company, preventing ownership disputes down the road.\n\nAdditionally, conducting regular clearance searches before launching new products protects you from inadvertent infringement claims.\n\nSummary Checklist:\n- Review employment agreements for IP assignment.\n- Register trade name and trademark symbols early.\n- Conduct patent searches during product R&D.\n- Document trade secrets and control internal access.",
+            'image_url' => 'https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=800&auto=format&fit=crop',
+            'video_url' => null,
+        ]);
     }
 }

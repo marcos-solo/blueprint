@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\BlogController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -25,6 +26,31 @@ Route::get('/dashboard', [ConsultationController::class, 'dashboard'])
 Route::patch('/consultations/{consultation}', [ConsultationController::class, 'update'])
     ->middleware(['auth'])
     ->name('consultations.update');
+
+// Public static page routes
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
+
+Route::get('/expertise', function () {
+    return Inertia::render('Expertise');
+})->name('expertise');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
+
+// Public blog routes
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
+
+// Admin blog routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/blogs', [BlogController::class, 'adminIndex'])->name('admin.blogs.index');
+    Route::post('/admin/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
+    Route::patch('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
+    Route::delete('/admin/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
