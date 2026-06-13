@@ -1,21 +1,13 @@
 name: Deploy to cPanel
 
 on:
-  push:
-    branches:
-      - main # or 'master' if that is your default branch
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Get latest code
-        uses: actions/checkout@v4
-
-      - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_DIR }}
+      - name: Deployment disabled
+        run: |
+          echo "FTP deployment has been removed from this workflow."
+          echo "Configure your own deployment step if needed."
