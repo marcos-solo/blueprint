@@ -225,6 +225,18 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 25px -10px rgba(197, 168, 128, 0.3);
 }
 
+/* Admin-scoped overrides: ensure outline buttons are visible on light admin panels */
+.admin-main .btn-outline {
+  color: var(--accent-blue);
+  border-color: var(--bg-tertiary);
+}
+
+.admin-main .btn-outline:hover {
+  background-color: var(--accent-gold);
+  color: var(--accent-blue);
+  border-color: var(--accent-gold);
+}
+
 .btn-full {
   width: 100%;
 }
@@ -1145,6 +1157,69 @@ textarea.form-control {
   margin-bottom: 1.5rem;
 }
 
+.profile-page {
+  padding-bottom: 6rem;
+}
+
+.profile-page-header {
+  display: grid;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text-primary);
+  box-shadow: none;
+  margin-bottom: 1.5rem;
+}
+
+.profile-page-header .section-subtitle {
+  color: var(--text-secondary);
+}
+
+.profile-page-header h2 {
+  color: var(--text-primary);
+}
+
+.profile-page-grid {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.profile-panel {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 1.5rem;
+}
+
+.profile-panel header h2,
+.profile-panel header p {
+  margin: 0;
+}
+
+.profile-panel header h2 {
+  font-size: 1.35rem;
+  color: var(--accent-blue);
+}
+
+.profile-panel section {
+  margin-top: 1.5rem;
+}
+
+.profile-panel .text-sm {
+  color: var(--text-secondary);
+}
+
+.profile-panel input[type="text"],
+.profile-panel input[type="email"],
+.profile-panel textarea,
+.profile-panel select {
+  border-radius: 12px;
+}
+
 /* ==========================================================================
    Responsive Adaptations & Media Queries (Mobile First)
    ========================================================================== */
@@ -1800,6 +1875,9 @@ textarea.form-control {
   position: sticky;
   top: 0;
   align-self: flex-start;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
 }
 
 .sidebar-brand {
@@ -1986,6 +2064,61 @@ textarea.form-control {
     padding: 1.5rem 1rem 3rem;
   }
 }
+
+/* Modal Styles for Admin Layout */
+.modal-dialog-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(100, 100, 100, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 40;
+}
+
+.modal-panel {
+  position: relative;
+  z-index: 51;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Adjust modal on admin screen - don't cover sidebar */
+@media (min-width: 951px) {
+  .admin-shell .modal-dialog-wrapper {
+    left: 280px;
+    width: calc(100% - 280px);
+  }
+
+  .admin-shell.collapsed .modal-dialog-wrapper {
+    left: 82px;
+    width: calc(100% - 82px);
+  }
+
+  .admin-shell .modal-backdrop {
+    left: 280px;
+    width: calc(100% - 280px);
+  }
+
+  .admin-shell.collapsed .modal-backdrop {
+    left: 82px;
+    width: calc(100% - 82px);
+  }
+}
+
+
 
 .drawer-overlay {
   position: fixed;
