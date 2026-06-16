@@ -48,7 +48,7 @@ Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show')
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/blogs', [BlogController::class, 'adminIndex'])->name('admin.blogs.index');
     Route::post('/admin/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
-    Route::patch('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
+    Route::put('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
     Route::delete('/admin/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 });
 
