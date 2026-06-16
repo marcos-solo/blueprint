@@ -1880,6 +1880,11 @@ textarea.form-control {
   overflow-y: auto;
 }
 
+/* Keep the admin sidebar above modal backdrop but below the modal panel */
+.admin-sidebar {
+  z-index: 45;
+}
+
 .sidebar-brand {
   display: flex;
   flex-direction: column;
