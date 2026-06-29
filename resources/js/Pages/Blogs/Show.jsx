@@ -12,7 +12,7 @@ export default function Show({ blog }) {
         });
     };
 
-    // Helper to get embed URL for YouTube or Vimeo
+    // Helper to get embed URL for YouTube, Vimeo, or Instagram
     const getEmbedUrl = (url) => {
         if (!url) return null;
         
@@ -28,6 +28,13 @@ export default function Show({ blog }) {
         const vimeoMatch = url.match(vimeoReg);
         if (vimeoMatch) {
             return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+        }
+
+        // Instagram matching (Posts and Reels)
+        const instReg = /(?:instagram\.com)\/(?:p|reel|tv)\/([a-zA-Z0-9-_]+)/;
+        const instMatch = url.match(instReg);
+        if (instMatch) {
+            return `https://www.instagram.com/p/${instMatch[1]}/embed`;
         }
         
         return url;

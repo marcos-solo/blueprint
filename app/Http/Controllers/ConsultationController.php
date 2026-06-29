@@ -41,18 +41,18 @@ class ConsultationController extends Controller
         $user = auth()->user();
 
         if ($user->is_admin) {
-            // Admin loads all consultations
-            $consultations = Consultation::orderBy('scheduled_at', 'desc')->get();
+            // Admin loads consultations with pagination
+            $consultations = Consultation::orderBy('scheduled_at', 'desc')->paginate(10);
         } else {
             // Proactively link any existing guest consultations with this user's email
             Consultation::where('email', $user->email)
                 ->whereNull('user_id')
                 ->update(['user_id' => $user->id]);
 
-            // Fetch user's consultations
+            // Fetch user's consultations (paginated)
             $consultations = Consultation::where('user_id', $user->id)
                 ->orderBy('scheduled_at', 'desc')
-                ->get();
+                ->paginate(10);
         }
 
         return Inertia::render('Dashboard', [

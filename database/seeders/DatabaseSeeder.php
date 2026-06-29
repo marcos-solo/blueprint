@@ -83,5 +83,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => 'https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=800&auto=format&fit=crop',
             'video_url' => null,
         ]);
+
+        $this->call(PageContentSeeder::class);
     }
 }

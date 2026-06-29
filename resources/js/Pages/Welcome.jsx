@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
 
-export default function Welcome() {
+export default function Welcome({ contents = {} }) {
+    const [heroImages, setHeroImages] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('/api/hero-images')
+            .then(res => res.json())
+            .then(data => {
+                setHeroImages(data.length > 0 ? data : []);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+                setHeroImages([]);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (heroImages.length <= 1) return;
+
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [heroImages.length]);
+
+    const currentImage = heroImages[currentImageIndex];
+
     return (
         <Layout>
             <Head>
@@ -11,25 +40,89 @@ export default function Welcome() {
                 <meta name="keywords" content="Tanzania law firm, Dar es Salaam lawyer, commercial law Tanzania, trademark lawyer Tanzania, business lawyer" />
             </Head>
 
-            {/* HERO SECTION: Dark navy, 2 buttons, right-side image */}
+            {/* HERO SECTION: Dark navy, 2 buttons, right-side carousel */}
             <section className="hero" id="home">
                 <div className="container">
                     <div className="hero-grid">
                         <div>
                             <h1 className="hero-title">
-                                Strategic legal counsel for businesses, investors and innovators in <span>Tanzania.</span>
+                                {contents.hero_title || "Strategic legal counsel for businesses, investors and innovators in Tanzania."}
                             </h1>
                             <p className="hero-description">
-                                Blueprint Legal provides practical, commercially focused legal support to companies, founders, investors and brand owners operating in Tanzania.
+                                {contents.hero_description || "Blueprint Legal provides practical, commercially focused legal support to companies, founders, investors and brand owners operating in Tanzania."}
                             </p>
                             <div className="hero-buttons">
-                                <Link href="/contact" className="btn-primary">Book a Consultation &rarr;</Link>
-                                <Link href="/expertise" className="btn-secondary">View Expertise &rarr;</Link>
+                                <Link href="/contact" className="btn-primary">
+                                    {contents.hero_cta_primary || "Book a Consultation"} &rarr;
+                                </Link>
+                                <Link href="/expertise" className="btn-secondary">
+                                    {contents.hero_cta_secondary || "Explore Expertise"} &rarr;
+                                </Link>
                             </div>
                         </div>
-                        <div className="hero-image">
-                            <img src="/images/hero_boardroom.png" alt="Blueprint Legal Boardroom" />
-                            <div className="placeholder-text">Premium Legal Counsel</div>
+                        <div className="hero-image" style={{ position: 'relative' }}>
+                            {heroImages.length > 0 ? (
+                                <>
+                                    {heroImages.map((image, idx) => (
+                                        <div
+                                            key={image.id}
+                                            style={{
+                                                position: idx === 0 ? 'relative' : 'absolute',
+                                                top: 0,
+                                                left: 0,
+                                                width: '100%',
+                                                height: '100%',
+                                                opacity: idx === currentImageIndex ? 1 : 0,
+                                                transition: 'opacity 0.8s ease-in-out',
+                                                zIndex: idx === currentImageIndex ? 1 : 0,
+                                            }}
+                                        >
+                                            <img
+                                                src={`/storage/${image.image_path}`}
+                                                alt={image.alt_text || 'Hero'}
+                                                style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    borderRadius: '12px',
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+                                    {heroImages.length > 1 && (
+                                        <div style={{
+                                            position: 'absolute',
+                                            bottom: '1rem',
+                                            left: '50%',
+                                            transform: 'translateX(-50%)',
+                                            display: 'flex',
+                                            gap: '0.5rem',
+                                            zIndex: 10,
+                                        }}>
+                                            {heroImages.map((_, idx) => (
+                                                <button
+                                                    key={idx}
+                                                    onClick={() => setCurrentImageIndex(idx)}
+                                                    style={{
+                                                        width: '10px',
+                                                        height: '10px',
+                                                        borderRadius: '50%',
+                                                        border: 'none',
+                                                        background: idx === currentImageIndex ? 'var(--accent-gold)' : 'rgba(255,255,255,0.5)',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.3s ease',
+                                                    }}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                </>
+                            ) : (
+                                <>
+                                    <img src="/images/hero_boardroom.png" alt="Blueprint Legal Boardroom" />
+                                    <div className="placeholder-text">Premium Legal Counsel</div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -103,26 +196,18 @@ export default function Welcome() {
                 </div>
             </section>
 
-            {/* FOUNDER TEASER */}
-            <section className="section section-alt" id="founder" style={{ padding: '5rem 0' }}>
-                <div className="container">
-                    <div className="founder-grid">
-                        <div className="founder-image" style={{ backgroundImage: 'url(/images/founder_jabari.png)', height: '350px', borderRadius: '8px' }}>
-                            <span>Founder</span>
-                        </div>
-                        <div>
-                            <span className="section-subtitle">Founder Perspective</span>
-                            <h2 className="section-title">Personal Counsel. Practical Solutions.</h2>
-                            <p style={{ marginTop: '1.5rem', color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7' }}>
-                                Blueprint Legal is led by a dedicated Tanzanian advocate with a commercial mindset and a commitment to delivering high-quality, responsive legal service. We bridge the gap between complex local regulatory systems and your company's growth objectives.
-                            </p>
-                            
-                            <div style={{ marginTop: '2rem' }}>
-                                <Link href="/about" className="btn btn-gold" style={{ padding: '0.75rem 2rem', backgroundColor: 'var(--accent-gold)', color: 'var(--accent-blue)', fontWeight: '700', borderRadius: '4px', display: 'inline-block' }}>
-                                    Learn More About the Founder &rarr;
-                                </Link>
-                            </div>
-                        </div>
+            {/* ADVOCACY PERSPECTIVE */}
+            <section className="section section-alt" id="advocacy" style={{ padding: '5rem 0' }}>
+                <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+                    <span className="section-subtitle">{contents.advocacy_subtitle || "Our Approach"}</span>
+                    <h2 className="section-title">{contents.advocacy_title || "Direct Advocacy. Practical Solutions."}</h2>
+                    <p style={{ marginTop: '1.5rem', color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.8' }}>
+                        {contents.advocacy_description || "Blueprint Legal partners directly with clients to deliver high-quality, responsive commercial advice. We bridge the gap between complex regulatory systems and your company's growth objectives in Tanzania."}
+                    </p>
+                    <div style={{ marginTop: '2rem' }}>
+                        <Link href="/about" className="btn btn-gold" style={{ padding: '0.75rem 2rem', backgroundColor: 'var(--accent-gold)', color: 'var(--accent-blue)', fontWeight: '700', borderRadius: '4px', display: 'inline-block' }}>
+                            Learn More About Our Firm &rarr;
+                        </Link>
                     </div>
                 </div>
             </section>

@@ -73,9 +73,7 @@ export default function Contact() {
                                     📍 Office Address
                                 </h3>
                                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.8' }}>
-                                    Dar es Salaam, Tanzania.
-                                    <br /><br />
-                                    Specific office location and meeting details will be provided upon consultation booking approval.
+                                    Millenium Towers II, Kijitonyama, Dar es Salaam, Tanzania.
                                 </p>
                             </div>
                         </div>

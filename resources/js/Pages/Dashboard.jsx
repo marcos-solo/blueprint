@@ -130,6 +130,10 @@ export default function Dashboard({ consultations = [], isAdmin = false }) {
     const { auth, flash } = usePage().props;
     const user = auth.user;
 
+    // Support both plain arrays and paginated resources from the server
+    const consultationsList = consultations?.data ?? consultations ?? [];
+    const totalCount = consultations?.total ?? consultationsList.length;
+
     // React state for search & filtering
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('all');
@@ -149,14 +153,14 @@ export default function Dashboard({ consultations = [], isAdmin = false }) {
 
     // Calculate dynamic stats
     const stats = {
-        total: consultations.length,
-        pending: consultations.filter(c => c.status === 'pending').length,
-        confirmed: consultations.filter(c => c.status === 'confirmed').length,
-        completed: consultations.filter(c => c.status === 'completed').length,
+        total: totalCount,
+        pending: consultationsList.filter(c => c.status === 'pending').length,
+        confirmed: consultationsList.filter(c => c.status === 'confirmed').length,
+        completed: consultationsList.filter(c => c.status === 'completed').length,
     };
 
     // Filter consultations based on input
-    const filteredConsultations = consultations.filter((c) => {
+    const filteredConsultations = consultationsList.filter((c) => {
         const matchesSearch = 
             c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             c.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -366,6 +370,22 @@ export default function Dashboard({ consultations = [], isAdmin = false }) {
                                             )}
                                         </div>
                                     ))}
+
+                                    {/* Pagination controls (server-side) */}
+                                    {consultations?.links && (
+                                        <div className="pagination" style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1rem' }}>
+                                            {consultations.links.map((link, idx) => (
+                                                <Link
+                                                    key={idx}
+                                                    href={link.url || '#'}
+                                                    className={`page-link ${link.active ? 'active' : ''}`}
+                                                    style={{ padding: '0.45rem 0.75rem', borderRadius: '8px', background: link.active ? 'var(--accent-blue)' : 'transparent', color: link.active ? '#ffffff' : 'var(--accent-blue)', border: '1px solid var(--bg-tertiary)', textDecoration: 'none' }}
+                                                >
+                                                    <span dangerouslySetInnerHTML={{ __html: link.label }} />
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>

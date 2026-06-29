@@ -59,38 +59,7 @@ export default function Expertise() {
                         </div>
                     </div>
 
-                    {/* Who We Serve Section */}
-                    <div className="section-header" style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
-                        <span className="section-subtitle">Who We Serve</span>
-                        <h2 className="section-title">Our Clients, Our Priority</h2>
-                    </div>
 
-                    <div className="chips-container">
-                        <div className="chip">
-                            <i className="fas fa-rocket"></i>
-                            <span>Startups</span>
-                        </div>
-                        <div className="chip">
-                            <i className="fas fa-chart-bar"></i>
-                            <span>SMEs</span>
-                        </div>
-                        <div className="chip">
-                            <i className="fas fa-globe"></i>
-                            <span>Foreign Investors</span>
-                        </div>
-                        <div className="chip">
-                            <i className="fas fa-tag"></i>
-                            <span>Brand Owners</span>
-                        </div>
-                        <div className="chip">
-                            <i className="fas fa-building"></i>
-                            <span>Property Developers</span>
-                        </div>
-                        <div className="chip">
-                            <i className="fas fa-code"></i>
-                            <span>Technology Businesses</span>
-                        </div>
-                    </div>
 
                 </div>
             </div>
