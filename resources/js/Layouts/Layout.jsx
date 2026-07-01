@@ -7,7 +7,8 @@ export default function Layout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
     const [adminMenuOpen, setAdminMenuOpen] = useState(false);
-    const isAdmin = auth?.user?.is_admin;
+    const isAdmin = auth?.user?.role === 'admin' || auth?.user?.role === 'super_admin';
+    const userRole = auth?.user?.role;
     const currentRoute = (pattern) => route().current(pattern);
 
     const navItems = [
@@ -77,13 +78,23 @@ export default function Layout({ children }) {
                         <header className="admin-topbar">
                             <div>
                                 <span className="admin-badge">Admin Portal</span>
+                                {userRole && (
+                                    <span className={`admin-role-pill ${userRole === 'super_admin' ? 'super' : 'admin'}`}>
+                                        {userRole === 'super_admin' ? 'Super Admin' : 'Admin'}
+                                    </span>
+                                )}
                                 <h1 style={{ margin: '0.5rem 0 0', fontSize: 'clamp(1.8rem, 2.3vw, 2.8rem)', color: 'var(--accent-blue)' }}>
                                     Blueprint Legal Management
                                 </h1>
                             </div>
                             <div className="admin-actions">
-                                <button type="button" className="admin-menu-toggle" onClick={() => setAdminMenuOpen((previous) => !previous)}>
-                                    {adminMenuOpen ? 'Close Admin Menu' : 'Open Admin Menu'}
+                                <button
+                                    type="button"
+                                    className="admin-menu-toggle"
+                                    onClick={() => setAdminMenuOpen((previous) => !previous)}
+                                    aria-label={adminMenuOpen ? 'Close admin menu' : 'Open admin menu'}
+                                >
+                                    <i className={adminMenuOpen ? 'fas fa-times' : 'fas fa-bars'} aria-hidden="true" />
                                 </button>
                                 <Link href="/" className="admin-action-link">View Public Site</Link>
                             </div>

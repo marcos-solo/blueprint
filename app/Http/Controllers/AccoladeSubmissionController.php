@@ -25,12 +25,6 @@ class AccoladeSubmissionController extends Controller
 
     public function index()
     {
-        $user = auth()->user();
-
-        if (! $user || ! $user->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $submissions = AccoladeSubmission::orderByRaw("FIELD(status, 'pending', 'approved', 'rejected')")
             ->orderBy('created_at', 'desc')
             ->get();
@@ -42,12 +36,6 @@ class AccoladeSubmissionController extends Controller
 
     public function update(Request $request, AccoladeSubmission $submission)
     {
-        $user = auth()->user();
-
-        if (! $user || ! $user->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'status' => 'required|string|in:pending,approved,rejected',
         ]);

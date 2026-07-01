@@ -11,11 +11,6 @@ class HeroImageController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-        if (!$user || !$user->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $images = HeroImage::orderBy('order')->get();
 
         return Inertia::render('Admin/HeroImageGallery', [
@@ -25,11 +20,6 @@ class HeroImageController extends Controller
 
     public function store(Request $request)
     {
-        $user = auth()->user();
-        if (!$user || !$user->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             'alt_text' => 'nullable|string|max:255',
@@ -53,11 +43,6 @@ class HeroImageController extends Controller
 
     public function update(Request $request, HeroImage $image)
     {
-        $user = auth()->user();
-        if (!$user || !$user->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'alt_text' => 'nullable|string|max:255',
             'order' => 'nullable|integer|min:0',
@@ -71,11 +56,6 @@ class HeroImageController extends Controller
 
     public function destroy(Request $request, HeroImage $image)
     {
-        $user = auth()->user();
-        if (!$user || !$user->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $imagePath = $image->image_path;
         $image->delete();
 

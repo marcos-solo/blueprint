@@ -11,6 +11,9 @@ use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\AccoladeSubmissionController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\HeroImageController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Middleware\IsSuperAdmin;
+use App\Http\Middleware\IsAdmin;
 use App\Models\PageContent;
 use App\Models\AccoladeSubmission;
 
@@ -91,21 +94,39 @@ Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.show');
 
 // Admin blog & page editor routes
-Route::middleware(['auth'])->group(function () {
+// General admin routes (admins and super admins)
+Route::middleware(['auth', IsAdmin::class])->group(function () {
+    // Blog management for admins
     Route::get('/admin/blogs', [BlogController::class, 'adminIndex'])->name('admin.blogs.index');
     Route::post('/admin/blogs', [BlogController::class, 'store'])->name('admin.blogs.store');
     Route::put('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('admin.blogs.update');
     Route::delete('/admin/blogs/{blog}', [BlogController::class, 'destroy'])->name('admin.blogs.destroy');
 
+    // Testimonials and accolades for admins
+    Route::patch('/admin/testimonials/{testimonial}', [TestimonialController::class, 'update'])->name('admin.testimonials.update');
+    Route::get('/admin/accolades/submissions', [AccoladeSubmissionController::class, 'index'])->name('admin.accolades.submissions.index');
+    Route::patch('/admin/accolades/submissions/{submission}', [AccoladeSubmissionController::class, 'update'])->name('admin.accolades.submissions.update');
+});
+
+// Super admin only routes (page editor & hero carousel)
+Route::middleware(['auth', IsSuperAdmin::class])->group(function () {
+    // Page editor
     Route::get('/admin/pages', [PageContentController::class, 'adminIndex'])->name('admin.pages.index');
     Route::post('/admin/pages/update', [PageContentController::class, 'update'])->name('admin.pages.update');
-    Route::patch('/admin/testimonials/{testimonial}', [TestimonialController::class, 'update'])->name('admin.testimonials.update');
+
+    // Hero carousel
     Route::get('/admin/hero-images', [HeroImageController::class, 'index'])->name('admin.hero-images.index');
     Route::post('/admin/hero-images', [HeroImageController::class, 'store'])->name('admin.hero-images.store');
     Route::patch('/admin/hero-images/{image}', [HeroImageController::class, 'update'])->name('admin.hero-images.update');
     Route::delete('/admin/hero-images/{image}', [HeroImageController::class, 'destroy'])->name('admin.hero-images.destroy');
-    Route::get('/admin/accolades/submissions', [AccoladeSubmissionController::class, 'index'])->name('admin.accolades.submissions.index');
-    Route::patch('/admin/accolades/submissions/{submission}', [AccoladeSubmissionController::class, 'update'])->name('admin.accolades.submissions.update');
+
+    // Admin users management
+    Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
+    Route::get('/admin/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin/users', [AdminUserController::class, 'store'])->name('admin.users.store');
+    Route::get('/admin/users/{user}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+    Route::patch('/admin/users/{user}', [AdminUserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 });
 
 Route::middleware('auth')->group(function () {

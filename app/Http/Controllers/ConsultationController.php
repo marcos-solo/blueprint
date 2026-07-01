@@ -40,7 +40,7 @@ class ConsultationController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->is_admin) {
+        if ($user->isAdmin()) {
             // Admin loads consultations with pagination
             $consultations = Consultation::orderBy('scheduled_at', 'desc')->paginate(10);
         } else {
@@ -57,7 +57,7 @@ class ConsultationController extends Controller
 
         return Inertia::render('Dashboard', [
             'consultations' => $consultations,
-            'isAdmin' => (bool)$user->is_admin,
+            'isAdmin' => (bool)$user->isAdmin(),
         ]);
     }
 
@@ -66,10 +66,6 @@ class ConsultationController extends Controller
      */
     public function update(Request $request, Consultation $consultation)
     {
-        if (!auth()->user()->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'status' => 'required|string|in:pending,confirmed,cancelled,completed',
             'notes' => 'nullable|string|max:5000',

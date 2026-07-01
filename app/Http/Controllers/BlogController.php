@@ -37,10 +37,6 @@ class BlogController extends Controller
      */
     public function adminIndex()
     {
-        if (!auth()->user()->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $blogs = Blog::orderBy('created_at', 'desc')->get();
         return Inertia::render('Blogs/AdminBlogs', [
             'blogs' => $blogs,
@@ -52,10 +48,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        if (!auth()->user()->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
@@ -83,10 +75,6 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        if (!auth()->user()->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
@@ -115,10 +103,6 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        if (!auth()->user()->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $blog->delete();
 
         return redirect()->back()->with('success', 'Blog post deleted successfully.');

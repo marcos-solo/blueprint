@@ -29,10 +29,6 @@ class TestimonialController extends Controller
 
     public function update(Request $request, Testimonial $testimonial)
     {
-        if (!auth()->check() || !auth()->user()->is_admin) {
-            abort(403, 'Unauthorized action.');
-        }
-
         $validated = $request->validate([
             'status' => 'required|string|in:pending,published,rejected',
             'notes' => 'nullable|string|max:2000',
